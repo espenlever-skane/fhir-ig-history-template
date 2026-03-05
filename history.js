@@ -43,8 +43,10 @@ function row(tableTagsArray, date, url, curl, ver, fver, desc, cl, hasFhirVersio
     dl = 'fhir-spec.zip';
   } 
 
+  var zipUrl = url + '/self-contained-package.zip';
   tableTagsArray.push('<td><a title="Home Page" href="'+url+'"><img src="https://hl7.org/fhir/assets/images/page.png"/></a>&nbsp;'+
-    '<a title="Download" href="'+url+'/'+dl+'"><img src="https://hl7.org/fhir/assets/images/download.gif"/></a>&nbsp;');
+    '<a title="Download" href="'+url+'/'+dl+'"><img src="https://hl7.org/fhir/assets/images/download.gif"/></a>&nbsp;'+
+    '<a title="ZIP Package" href="'+zipUrl+'" data-zip-check="'+zipUrl+'" style="display:none"><img src="./assets-hist/images/skane.png"/></a>&nbsp;');
   tableTagsArray.push(
     '<a title="QA Page" href="'+url+'/qa.html"><img src="https://hl7.org/fhir/assets/images/qa.png"/></a>&nbsp; ');
   if (jo == null || jo["sub-packages"] == null) {
@@ -257,6 +259,21 @@ function buildDataTable(dataList, curl, dataContainer, title, footnote) {
    else
     footnote = "";
   dataContainer.innerHTML = "<p>The following versions of the "+title+" have been published:</p>"+tableTagsArray.join('')+footnote;
+  checkZipLinks(dataContainer);
+}
+
+function checkZipLinks(container) {
+  var links = container.querySelectorAll('a[data-zip-check]');
+  links.forEach(function(link) {
+    var zipUrl = link.getAttribute('data-zip-check');
+    fetch(zipUrl, { method: 'HEAD' })
+      .then(function(response) {
+        if (response.ok) {
+          link.style.display = '';
+        }
+      })
+      .catch(function() { /* file not available */ });
+  });
 }
 
 function processIntro(md) {
