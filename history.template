@@ -12,8 +12,8 @@
   <link href="assets-hist/css/project.css" rel="stylesheet"/>
   <link href="assets-hist/css/pygments-manni.css" rel="stylesheet"/>
 	<link href="jquery-ui.css" rel="stylesheet"/>
-  <script type="application/javascript" src="./history-cm.js"> </script>
-  <script type="application/javascript" src="./history.js"> </script>
+  <script type="application/javascript" src="./assets-hist/js/history-cm.js"> </script>
+  <script type="application/javascript" src="./assets-hist/js/history.js"> </script>
   <link href="history.css" rel="stylesheet"/>
   <!-- header.template starts here -->
 $header$  
