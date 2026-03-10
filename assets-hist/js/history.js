@@ -43,7 +43,7 @@ function row(tableTagsArray, date, url, curl, ver, fver, desc, cl, hasFhirVersio
     dl = 'fhir-spec.zip';
   } 
 
-  var zipUrl = url + '/' + '/self-contained-package.zip';
+  var zipUrl = url + '/self-contained-package.zip';
   tableTagsArray.push('<td><a title="Home Page" href="'+url+'"><img src="https://hl7.org/fhir/assets/images/page.png"/></a>&nbsp;'+
     '<a title="Download" href="'+url+'/'+dl+'"><img src="https://hl7.org/fhir/assets/images/download.gif"/></a>&nbsp;'+
     '<a title="ZIP Package" href="'+zipUrl+'" data-zip-check="'+zipUrl+'" style="display:none"><img src="./assets-hist/images/skane.png"/></a>&nbsp;');
